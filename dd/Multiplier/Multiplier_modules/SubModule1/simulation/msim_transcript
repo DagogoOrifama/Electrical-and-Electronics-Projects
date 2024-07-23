@@ -1,0 +1,187 @@
+# Reading C:/altera/15.0/modelsim_ase/tcl/vsim/pref.tcl
+# Reading C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/modelsim.tcl
+# do SubModule1_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
+# vmap -modelsim_quiet work rtl_work 
+# Copying C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/FPGA_workspace/Multiplier_modules/SubModule1 {C:/FPGA_workspace/Multiplier_modules/SubModule1/SubModule1.v}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 20:01:45 on Feb 06,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/FPGA_workspace/Multiplier_modules/SubModule1" C:/FPGA_workspace/Multiplier_modules/SubModule1/SubModule1.v 
+# -- Compiling module SubModule1
+# -- Compiling module FullAdder
+# 
+# Top level modules:
+# 	SubModule1
+# End time: 20:01:45 on Feb 06,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation {C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/SubModule1_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 20:01:45 on Feb 06,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation" C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/SubModule1_tb.v 
+# -- Compiling module SubModule1_tb
+# 
+# Top level modules:
+# 	SubModule1_tb
+# End time: 20:01:46 on Feb 06,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  SubModule1_tb
+# vsim -gui "+altera" -l msim_transcript -do "SubModule1_run_msim_rtl_verilog.do" 
+# Start time: 20:01:46 on Feb 06,2018
+# Loading work.SubModule1_tb
+# Loading work.SubModule1
+# Loading work.FullAdder
+# 
+# do C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/load_sim.tcl
+#
+# NativeLink Simulation Initialisation Script
+# ===========================================
+# By: Thomas Carpenter
+# Date: 31st December 2017
+# For: University of Leeds
+#
+# Description
+# ===========
+# This is a basic sample script for initialising a simulation
+#
+# All commands in this script will be executed, and comments will
+# be printed to the screen
+#
+# Most of the work in compiling is done by Quartus automatically.
+# Here we can add some extra commands.
+#
+# There is lots of stuff you can do, such as running initialisation
+# scripts, preparing memory contents, setting up the simulator.
+#
+# 
+#
+# First lets clean up any old NativeLink backup files. Quartus
+# creates a new backup file every time it runs. It never deletes
+# these files so you end up with an ever increasing number of them.
+#
+# The {*}[glob -nocomplain ... ] command performs wildcard matching
+# of filenames, to make sure we get all .bak files. The "-nocomplain"
+# and "catch {}" ensure that if no backups exist, there is no error.
+#
+# 
+# catch {file delete {*}[glob -nocomplain *_msim_rtl_verilog.do.bak*]}
+# 0
+# 
+#
+# This will continue executing our script if a break point in the
+# simulation is reached - for example the $stop command in Verilog
+#
+# 
+# onbreak {resume}
+# 
+# 
+# Once you add signals to the Wave view to see them graphically
+# and got them all set up to your liking (Radix, arrangement, etc.)
+# it is possible to save that layout as a "Waveform Format Do File".
+# From modelsim if you click on the Wave window and File->Save Format
+# this will generate the "Do" file for you.
+#
+# I will assume that you saved the file with name "wave.do" (default)
+# in the simulation folder (same place as this TCL).
+#
+# Each time we run the simulation, we can run this file to restore 
+# the setup:
+#
+#   do <filename>
+#
+# Of course the first time you run the simulation the file might not
+# yet exist - you might never choose to save a format. So we also
+# first check if the file exists before do-ing it.
+# 
+# 
+# We normalise the filename to prevent issues with spaces in the filename
+# set waveFile [file normalize "./wave.do"]
+# C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/wave.do
+# 
+# if { [file exists $waveFile] } {
+#     #If the saved file exists, load it
+#     do $waveFile
+# } else {
+#     #Otherwise simply add all signals in the testbench formatted as unsigned decimal.
+#     add wave -radix unsigned -position insertpoint sim:/*
+# }
+# 
+#
+# Then we can configure the units for the timeline. Lets stick to
+# nanoseconds instead of the default of picoseconds.
+#
+# 
+# configure wave -timelineunits ns
+# 
+# 
+# Next we can start the simulation. We simply say "run".
+#
+# The "run" command can be followed by a time parameter, such as:
+#
+#     run 100ns     # Run for 100ns
+#     run -all      # Run until the testbench stops changing stimuli
+#     run 10        # Run for 10 "timesteps" (typically 1ps per step)
+#
+# ========== Simulation Starts Here ===========
+# 
+# run -all
+# testInput	sum	cout
+# 00000	sum=0	cout=0
+# 00001	sum=0	cout=0
+# 00010	sum=0	cout=0
+# 00011	sum=0	cout=0
+# 00100	sum=0	cout=0
+# 00101	sum=0	cout=0
+# 00110	sum=1	cout=0
+# 00111	sum=1	cout=0
+# 01000	sum=0	cout=0
+# 01001	sum=1	cout=0
+# 01010	sum=0	cout=0
+# 01011	sum=1	cout=0
+# 01100	sum=0	cout=0
+# 01101	sum=1	cout=0
+# 01110	sum=1	cout=0
+# 01111	sum=0	cout=1
+# 10000	sum=1	cout=0
+# 10001	sum=1	cout=0
+# 10010	sum=1	cout=0
+# 10011	sum=1	cout=0
+# 10100	sum=1	cout=0
+# 10101	sum=1	cout=0
+# 10110	sum=0	cout=1
+# 10111	sum=0	cout=1
+# 11000	sum=1	cout=0
+# 11001	sum=0	cout=1
+# 11010	sum=1	cout=0
+# 11011	sum=0	cout=1
+# 11100	sum=1	cout=0
+# 11101	sum=0	cout=1
+# 11110	sum=0	cout=1
+# 11111	sum=1	cout=1
+# ** Note: $stop    : C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/SubModule1_tb.v(47)
+#    Time: 320 ns  Iteration: 0  Instance: /SubModule1_tb
+# Break in Module SubModule1_tb at C:/FPGA_workspace/Multiplier_modules/SubModule1/simulation/SubModule1_tb.v line 47
+# 
+# ========== Simulation Ends Here ===========
+#
+# Once the simulation finishes we will reach here
+#
+# Let's for example zoom out in the wave display to fit all data
+#
+# 
+# wave zoom full
+# 0 ps
+# 336 ns
+# End time: 20:04:15 on Feb 06,2018, Elapsed time: 0:02:29
+# Errors: 0, Warnings: 0

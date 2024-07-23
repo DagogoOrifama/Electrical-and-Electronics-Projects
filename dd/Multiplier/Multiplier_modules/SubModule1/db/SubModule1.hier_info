@@ -1,0 +1,21 @@
+|SubModule1
+mk => comb.IN0
+mk1 => comb.IN0
+q0 => comb.IN1
+q1 => comb.IN1
+cin => cin.IN1
+sum << FullAdder:top.sum
+cout << FullAdder:top.cout
+
+
+|SubModule1|FullAdder:top
+a => link[0].IN0
+a => link[1].IN0
+b => link[0].IN1
+b => link[1].IN1
+cin => comb.IN1
+cin => link[2].IN1
+cout <= comb.DB_MAX_OUTPUT_PORT_TYPE
+sum <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
