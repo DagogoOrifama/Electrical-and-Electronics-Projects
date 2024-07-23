@@ -46,3 +46,7 @@ The project successfully modeled and simulated a wind turbine-driven induction g
 ## Appendix
 
 The MATLAB code used for the simulation is provided in the appendix of the report. The code includes initialization of parameters, application of Clarke's Transformation, and implementation of the Runge-Kutta 4th order method for solving the state space equations. The code also includes plotting of the simulation results for analysis.
+
+## Author
+**Dagogo Gowin Orifama**  
+**dagoris2010@gmail.com**
