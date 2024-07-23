@@ -36,4 +36,4 @@ This project demonstrates a practical application of embedded systems in environ
 ## Author
 **Dagogo Gowin Orifama**  
 **dagoris2010@gmail.com** 
-January 2018
+- January 2018
