@@ -1,11 +1,5 @@
 # Modelling a Boost Converter - With and Without PV Connected
 
-## Author
-Dagogo Godwin Orifama  
-MSc Electronics and Electrical Engineering  
-University of Leeds  
-November 2017
-
 ## Project Overview
 This project investigates and validates the operations of a boost converter both with and without a photovoltaic (PV) connection. The study involves:
 
@@ -28,3 +22,7 @@ The project demonstrates the practical application of mathematical modeling in e
 ## Files
 - **boost_converter.m**: MATLAB code for boost converter simulation.
 - **pv_boost_converter.m**: MATLAB code for boost converter with PV panel simulation.
+
+## Author
+**Dagogo Gowin Orifama**  
+**dagoris2010@gmail.com**
