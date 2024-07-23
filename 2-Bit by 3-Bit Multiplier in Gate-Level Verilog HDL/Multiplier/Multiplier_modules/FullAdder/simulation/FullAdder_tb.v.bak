@@ -1,0 +1,50 @@
+
+
+`timescale 1 ns/100 ps
+
+
+
+
+module FullAdder_tb;
+
+//Test Bench generated signal 
+
+reg [2:0] test_input;
+reg a;
+reg b;
+reg cin;
+
+// DUT output signal
+wire sum;
+wire cout;
+
+//device under test
+FullAdder FullAdder_dut(
+	.a(test_input[0]		),
+	.b(test_input[1]		),
+	.cin(test_input[2]		),
+	.sum(sum				),
+	.cout(cout				)
+);
+
+//Test Bench genrated signal
+initial 
+begin 
+	//initialise the inputs
+	test_input = 0;
+	// print to console that simulation has started and output the current time
+	$display("%d ns\tSimulation time", $time);
+	// monitor the input an output signals
+	$monitor("%d nd\ttest_input=%b\tsum=%b\tcout=%b\",$time,test_input,sum,cout);
+end
+
+always
+begin
+	
+	#10; //10 nanosecond for each alteration
+	test_input = test_input + 1'b1;  
+	
+end
+	$display("%d nd\tSimulation completed", $time);
+end
+endmodule 

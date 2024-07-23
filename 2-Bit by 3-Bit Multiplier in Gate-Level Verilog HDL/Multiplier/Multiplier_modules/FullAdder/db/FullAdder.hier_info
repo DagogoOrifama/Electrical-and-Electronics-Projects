@@ -1,0 +1,11 @@
+|FullAdder
+a => link[0].IN0
+a => link[1].IN0
+b => link[0].IN1
+b => link[1].IN1
+cin => comb.IN1
+cin => link[2].IN1
+cout <= comb.DB_MAX_OUTPUT_PORT_TYPE
+sum <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
