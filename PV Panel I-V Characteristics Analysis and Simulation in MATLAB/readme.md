@@ -41,3 +41,8 @@ The PV panel was modeled in MATLAB using the Newton-Raphson method, which is an 
 - **Shunt Resistance (Rp)**: Represents losses due to defects in the PV cell.
 - **Series Resistance (Rs)**: Represents ohmic losses due to metal contacts.
 - **Load Resistance (RL)**: Resistance connected to the output terminal of the PV cell.
+
+
+## Author
+**Dagogo Gowin Orifama**  
+**dagoris2010@gmail.com**
