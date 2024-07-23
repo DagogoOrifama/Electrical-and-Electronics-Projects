@@ -1,0 +1,28 @@
+# Reading C:/altera/15.0/modelsim_ase/tcl/vsim/pref.tcl
+# do MultCal_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
+# vmap -modelsim_quiet work rtl_work 
+# Copying C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/FPGA_workspace/MultCal {C:/FPGA_workspace/MultCal/MultCal.v}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 16:38:23 on Feb 03,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/FPGA_workspace/MultCal" C:/FPGA_workspace/MultCal/MultCal.v 
+# -- Compiling module MultCal
+# -- Compiling module FirstR
+# -- Compiling module SecondR
+# -- Compiling module Adder1Bit
+# 
+# Top level modules:
+# 	MultCal
+# End time: 16:38:24 on Feb 03,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 

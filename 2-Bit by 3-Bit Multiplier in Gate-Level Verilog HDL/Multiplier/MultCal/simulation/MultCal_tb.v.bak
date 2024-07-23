@@ -1,0 +1,75 @@
+
+// Timescale indicates unit of delays.
+//  `timescale  unit / precision
+// Where delays are given as:
+//   #unit.precision
+//
+// Let's stick with a "unit" of 1ns. You may choose the "precision".
+//
+// e.g for `timescale 1ns/100ps then:
+//   #1 = 1ns
+//   #1.5 = 1.5ns
+//   #1.25 = 1.3ns (rounded to nearest precision)
+`timescale 1 ns/100 ps
+// Test bench module declaration
+//  Always end test bench module names with _tb for clarity
+//  There is no port list for a test bench
+module MultCal_tb;
+//Test bench generated signal 
+reg [1:0] m;
+reg [2:0] q;
+
+//DUT Output Signal
+wire [4:0] p;
+
+// evice Under test
+MultCal MultCal_dut (
+	.m(m	),
+	.q(q	),
+	.p(p	)
+);
+
+// Test bench logic
+
+initial begin 
+   //Print to console that the simulation has started. $time is the current simulation time.
+    $display("%d ns\tSimulation Started",$time);  
+    //Monitor any changes to any values listed. This will automatically print to the console when they change.
+    //There can only be one $monitor per simulation.
+    $monitor("%d ns\tm=%d\tq=%d\tp=%b",$time,m,q,p); 
+    //Initialise m and q to 0.
+	
+	m = 2'd0;
+    q = 3'd0;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd1;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd2;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd3;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd4;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd5;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd6;
+    #5; //Wait 10 ns.
+	m = 2'd0;
+    q = 3'd7;
+    //Finished
+
+ $display("%d ns\tSimulation Finished",$time);
+    //There are no other processes running in this testbench, so "run -all" in ModelSim
+    //will finish the simulation automatically now.
+    //We can also use $stop(); to finish the simulation whenever we want.
+end
+
+
+endmodule
+

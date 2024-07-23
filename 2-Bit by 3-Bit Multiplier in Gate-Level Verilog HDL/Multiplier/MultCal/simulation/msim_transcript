@@ -1,0 +1,204 @@
+# Reading C:/altera/15.0/modelsim_ase/tcl/vsim/pref.tcl
+# Reading C:/FPGA_workspace/MultCal/simulation/modelsim.tcl
+# do MultCal_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
+# vmap -modelsim_quiet work rtl_work 
+# Copying C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:/altera/15.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/FPGA_workspace/MultCal {C:/FPGA_workspace/MultCal/MultCal.v}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 09:46:25 on Feb 06,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/FPGA_workspace/MultCal" C:/FPGA_workspace/MultCal/MultCal.v 
+# -- Compiling module MultCal
+# -- Compiling module Multiplier2by3
+# -- Compiling module SubModule1
+# -- Compiling module SubModule2
+# -- Compiling module FullAdder
+# 
+# Top level modules:
+# 	MultCal
+# End time: 09:46:26 on Feb 06,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/FPGA_workspace/MultCal/simulation {C:/FPGA_workspace/MultCal/simulation/MultCal_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 09:46:26 on Feb 06,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/FPGA_workspace/MultCal/simulation" C:/FPGA_workspace/MultCal/simulation/MultCal_tb.v 
+# -- Compiling module MultCal_tb
+# ** Warning: C:/FPGA_workspace/MultCal/simulation/MultCal_tb.v(53): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# 
+# Top level modules:
+# 	MultCal_tb
+# End time: 09:46:26 on Feb 06,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  MultCal_tb
+# vsim -gui "+altera" -l msim_transcript -do "MultCal_run_msim_rtl_verilog.do" 
+# Start time: 09:46:27 on Feb 06,2018
+# Loading work.MultCal_tb
+# Loading work.MultCal
+# Loading work.Multiplier2by3
+# Loading work.SubModule1
+# Loading work.FullAdder
+# Loading work.SubModule2
+# ** Warning: (vsim-3015) C:/FPGA_workspace/MultCal/MultCal.v(47): [PCDPC] - Port size (1) does not match connection size (32) for port 'cin'. The port definition is at: C:/FPGA_workspace/MultCal/MultCal.v(93).
+# 
+#         Region: /MultCal_tb/MultCal_dut/inner/compute_P1
+# ** Warning: (vsim-3015) C:/FPGA_workspace/MultCal/MultCal.v(57): [PCDPC] - Port size (1) does not match connection size (32) for port 'mk1'. The port definition is at: C:/FPGA_workspace/MultCal/MultCal.v(90).
+# 
+#         Region: /MultCal_tb/MultCal_dut/inner/compute_p2a
+# ** Warning: (vsim-3015) C:/FPGA_workspace/MultCal/MultCal.v(68): [PCDPC] - Port size (1) does not match connection size (32) for port 'cin'. The port definition is at: C:/FPGA_workspace/MultCal/MultCal.v(115).
+# 
+#         Region: /MultCal_tb/MultCal_dut/inner/compute_p2b
+# 
+# do C:/FPGA_workspace/MultCal/simulation/load_sim.tcl
+#
+# NativeLink Simulation Initialisation Script
+# ===========================================
+# By: Thomas Carpenter
+# Date: 31st December 2017
+# For: University of Leeds
+#
+# Description
+# ===========
+# This is a basic sample script for initialising a simulation
+#
+# All commands in this script will be executed, and comments will
+# be printed to the screen
+#
+# Most of the work in compiling is done by Quartus automatically.
+# Here we can add some extra commands.
+#
+# There is lots of stuff you can do, such as running initialisation
+# scripts, preparing memory contents, setting up the simulator.
+#
+# 
+#
+# First lets clean up any old NativeLink backup files. Quartus
+# creates a new backup file every time it runs. It never deletes
+# these files so you end up with an ever increasing number of them.
+#
+# The {*}[glob -nocomplain ... ] command performs wildcard matching
+# of filenames, to make sure we get all .bak files. The "-nocomplain"
+# and "catch {}" ensure that if no backups exist, there is no error.
+#
+# 
+# catch {file delete {*}[glob -nocomplain *_msim_rtl_verilog.do.bak*]}
+# 0
+# 
+#
+# This will continue executing our script if a break point in the
+# simulation is reached - for example the $stop command in Verilog
+#
+# 
+# onbreak {resume}
+# 
+# 
+# Once you add signals to the Wave view to see them graphically
+# and got them all set up to your liking (Radix, arrangement, etc.)
+# it is possible to save that layout as a "Waveform Format Do File".
+# From modelsim if you click on the Wave window and File->Save Format
+# this will generate the "Do" file for you.
+#
+# I will assume that you saved the file with name "wave.do" (default)
+# in the simulation folder (same place as this TCL).
+#
+# Each time we run the simulation, we can run this file to restore 
+# the setup:
+#
+#   do <filename>
+#
+# Of course the first time you run the simulation the file might not
+# yet exist - you might never choose to save a format. So we also
+# first check if the file exists before do-ing it.
+# 
+# 
+# We normalise the filename to prevent issues with spaces in the filename
+# set waveFile [file normalize "./wave.do"]
+# C:/FPGA_workspace/MultCal/simulation/wave.do
+# 
+# if { [file exists $waveFile] } {
+#     #If the saved file exists, load it
+#     do $waveFile
+# } else {
+#     #Otherwise simply add all signals in the testbench formatted as unsigned decimal.
+#     add wave -radix unsigned -position insertpoint sim:/*
+# }
+# 
+#
+# Then we can configure the units for the timeline. Lets stick to
+# nanoseconds instead of the default of picoseconds.
+#
+# 
+# configure wave -timelineunits ns
+# 
+# 
+# Next we can start the simulation. We simply say "run".
+#
+# The "run" command can be followed by a time parameter, such as:
+#
+#     run 100ns     # Run for 100ns
+#     run -all      # Run until the testbench stops changing stimuli
+#     run 10        # Run for 10 "timesteps" (typically 1ps per step)
+#
+# ========== Simulation Starts Here ===========
+# 
+# run -all
+#                    0 ns	Simulation Started
+#                    0 ns	m=00	q=000	p=00000
+#                   10 ns	m=00	q=001	p=00000
+#                   20 ns	m=00	q=010	p=00000
+#                   30 ns	m=00	q=011	p=00000
+#                   40 ns	m=00	q=100	p=00000
+#                   50 ns	m=00	q=101	p=00000
+#                   60 ns	m=00	q=110	p=00000
+#                   70 ns	m=00	q=111	p=00000
+#                   80 ns	m=01	q=000	p=00000
+#                   90 ns	m=01	q=001	p=00001
+#                  100 ns	m=01	q=010	p=00010
+#                  110 ns	m=01	q=011	p=00011
+#                  120 ns	m=01	q=100	p=00100
+#                  130 ns	m=01	q=101	p=00101
+#                  140 ns	m=01	q=110	p=00110
+#                  150 ns	m=01	q=111	p=00111
+#                  160 ns	m=10	q=000	p=00000
+#                  170 ns	m=10	q=001	p=00010
+#                  180 ns	m=10	q=010	p=00100
+#                  190 ns	m=10	q=011	p=00110
+#                  200 ns	m=10	q=100	p=01000
+#                  210 ns	m=10	q=101	p=01010
+#                  220 ns	m=10	q=110	p=01100
+#                  230 ns	m=10	q=111	p=01110
+#                  240 ns	m=11	q=000	p=00000
+#                  250 ns	m=11	q=001	p=00011
+#                  260 ns	m=11	q=010	p=00110
+#                  270 ns	m=11	q=011	p=01001
+#                  280 ns	m=11	q=100	p=01100
+#                  290 ns	m=11	q=101	p=01111
+#                  300 ns	m=11	q=110	p=10010
+#                  310 ns	m=11	q=111	p=10101
+# ** Note: $stop    : C:/FPGA_workspace/MultCal/simulation/MultCal_tb.v(59)
+#    Time: 320 ns  Iteration: 0  Instance: /MultCal_tb
+# Break in Module MultCal_tb at C:/FPGA_workspace/MultCal/simulation/MultCal_tb.v line 59
+# 
+# ========== Simulation Ends Here ===========
+#
+# Once the simulation finishes we will reach here
+#
+# Let's for example zoom out in the wave display to fit all data
+#
+# 
+# wave zoom full
+# 0 ps
+# 336 ns
+# End time: 09:47:17 on Feb 06,2018, Elapsed time: 0:00:50
+# Errors: 0, Warnings: 3

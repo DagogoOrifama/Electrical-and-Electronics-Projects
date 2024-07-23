@@ -1,0 +1,130 @@
+module MultCal(
+	input [1:0] m,
+	input[2:0] q,
+	output[4:0] p
+);
+Multiplier2by3 inner(
+	.m(m  ),
+	.q(q  ),
+	.p(p  )
+);
+endmodule
+module Multiplier2by3(
+	input [1:0] m,
+	input[2:0] q,
+	output[4:0] p
+);
+and(p[0],q[0],m[0]);
+ wire [2:0] carry;
+ wire ppSum;
+
+ FirstR comp1(
+	.mk(m[0]),
+	.mk1(m[1]),
+	.q0(q[0]),
+	.q1(q[1]),
+	.cin (0),
+	.sum(p[1]),
+	.cout(carry[0])
+ );
+ 
+ FirstR comp_p2a(
+	.mk(m[1]),
+	.mk1(0),
+	.q0(q[0]),
+	.q1(q[1]),
+	.cin (carry[0]),
+	.sum(ppSum),
+	.cout(carry[1])
+ 
+ );
+ SecondR comp_p2(
+	.mk(m[0]),
+	.q2(q[2]),
+	.cin(0),
+	.ppi(ppSum),
+	.sum(p[2]),
+	.cout(carry[2])
+);
+ SecondR comp_p3p4(
+	.mk(m[1]),
+	.q2(q[2]),
+	.cin(carry[2]),
+	.ppi(carry[1]),
+	.sum(p[3]),
+	.cout(p[4])
+);
+  
+ 
+
+endmodule
+
+module FirstR(
+	input mk,
+	input mk1,
+	input q0,
+	input q1,
+	input cin,
+	output sum,
+	output cout
+);
+	wire linka, linkb;
+	and(linka,q1,mk);
+	and(linkb,q0,mk1);
+	
+	Adder1Bit top(
+		.a(linka),
+		.b(linkb),
+		.cin(cin),
+		.sum(sum),
+		.cout(cout)
+	
+	);
+	
+endmodule
+
+module SecondR(
+	input mk,
+	input q2,
+	input cin,
+	input ppi,
+	output sum,
+	output cout
+);
+	wire linka;
+	and(linka,q2,mk);
+	
+	Adder1Bit btm(
+		.a(linka),
+		.b(ppi),
+		.cin(cin),
+		.sum(sum),
+		.cout(cout)
+	);
+endmodule
+
+module Adder1Bit (
+    // Declare input and output ports
+    input  a,
+    input  b,
+    input  cin,
+    output cout,
+    output sum
+);
+    // Declare several single-bit wires that we can
+    // use to interconnect the gates. You can use
+    // any name you like as long as it contains only
+    // a-z, A-Z, underscore (_), and 0-9. Names can't
+    // start with a digit.
+    wire link1,link2,link3;
+
+    // Instantiate gates to calculate sum output
+    xor(link1,a,b);
+    xor(sum,link1,cin);
+
+    // Instantiate gates to calculate carry (cout) output
+    and(link2,a,b);
+    and(link3,cin,link1);
+    or (cout,link2,link3);
+
+endmodule

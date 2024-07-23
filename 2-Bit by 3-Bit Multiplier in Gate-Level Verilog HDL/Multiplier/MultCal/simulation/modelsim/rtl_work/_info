@@ -1,0 +1,98 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/FPGA_workspace/MultCal/simulation/modelsim
+vAdder1Bit
+Z1 !s110 1517675903
+!i10b 1
+!s100 0NCVKLPC]52QCoSU67:MR2
+I3TKUa1=Og_D4189EV<mL`0
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+Z3 w1517671685
+Z4 8C:/FPGA_workspace/MultCal/MultCal.v
+Z5 FC:/FPGA_workspace/MultCal/MultCal.v
+L0 95
+Z6 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z7 !s108 1517675903.877000
+Z8 !s107 C:/FPGA_workspace/MultCal/MultCal.v|
+Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/FPGA_workspace/MultCal|C:/FPGA_workspace/MultCal/MultCal.v|
+!i113 1
+Z10 o-vlog01compat -work work
+Z11 !s92 -vlog01compat -work work +incdir+C:/FPGA_workspace/MultCal
+n@adder1@bit
+vFirstR
+R1
+!i10b 1
+!s100 RMIzg=N_E7GCELiig<e_M3
+IIIoD:o0hb:0Jh2g;K65IN0
+R2
+R0
+R3
+R4
+R5
+L0 51
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@first@r
+vMultCal
+R1
+!i10b 1
+!s100 OhXgjT;Da0GT?1[X0eP0K2
+ID^5VlAWQ0Mf<`M:U=_?E31
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@mult@cal
+vSecondR
+R1
+!i10b 1
+!s100 fUC4=3>Hh1lReYTdfCP9J1
+IdJbBRSRh74VRiY7[?SPzQ1
+R2
+R0
+R3
+R4
+R5
+L0 75
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@second@r
